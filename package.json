@@ -4,7 +4,8 @@
   "description": "",
   "main": "Logger.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:debug": "node --inspect node_modules/.bin/jest --watch --runInBand --no-cache"
   },
   "repository": {
     "type": "git",
@@ -14,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/davidtadams/action_logger/issues"
   },
-  "homepage": "https://github.com/davidtadams/action_logger#readme"
+  "homepage": "https://github.com/davidtadams/action_logger#readme",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
 }
