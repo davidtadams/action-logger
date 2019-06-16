@@ -1,5 +1,7 @@
 # Action Logger
 
+[![npm version](https://img.shields.io/npm/v/jc-action-logger.svg)](https://www.npmjs.com/package/jc-action-logger)
+
 # Contents
 
 1. [Getting Started](#getting-started)
