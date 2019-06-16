@@ -74,6 +74,8 @@ class Logger {
            */
           const stats = Object.keys(this.actions).reduce((acc, actionKey) => {
             const { avg } = this.actions[actionKey];
+
+            // This rounds the average to two decimal places
             const roundedAvg = Number(Math.round(avg + 'e2') + 'e-2');
 
             acc.push({

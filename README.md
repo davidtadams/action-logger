@@ -7,10 +7,11 @@
 1. [Getting Started](#getting-started)
 2. [Installing](#installing)
 3. [Using the Library](#using-the-library)
-4. [Developing Locally](#developing-locally)
-5. [Running Tests](#running-tests)
-6. [Assumptions](#assumptions)
-7. [Future Considerations](#future-considerations)
+4. [Intended Use](#intended-use)
+5. [Developing Locally](#developing-locally)
+6. [Running Tests](#running-tests)
+7. [Assumptions](#assumptions)
+8. [Future Considerations](#future-considerations)
 
 ## Getting Started
 
@@ -24,7 +25,7 @@ Once you have NodeJS and npm installed, you can then install this library. This 
 npm install --save jc-action-logger
 ```
 
-This needs to be run in the project directory for which you are installing this library. The project should already be setup as an npm enabled project.
+This needs to be run in the project directory for which you are installing this library. The project should already be setup as an npm enabled project. If it is not you can look [here](https://docs.npmjs.com/cli/init) at how to initialize a project with npm.
 
 ## Using the Library
 
@@ -84,14 +85,14 @@ If there are any errors that occur within `getStats` it will throw an exception 
 
 ### Using async/await
 
-You can utilize this library using the Promise API, like mentioned above, with `then` and `catch`. However, if you want, you cal also utilize the library with async/await, which would look like this:
+You can utilize this library using the Promise API, like mentioned above, with `then` and `catch`. However, if you want, you can also utilize the library with async/await, which would look like this:
 
 ```
 async function addAction() {
   try {
     await logger.addAction('{"action":"jump","time":100}');
   } catch (error) {
-
+    //handle error
   }
 }
 ```
@@ -102,14 +103,18 @@ async function getStats() {
     const stats = await logger.getStats();
     const deserializedStats = JSON.parse(stats);
   } catch (error) {
-
+    //handle error
   }
 }
 ```
 
+## Intended Use
+
+This library could be used for many purposes. It would be helpful for any sort of system where you have something happening, an event or action, and would like to track some sort of time metric associated with that event. One example would be performance tracking. Say you had a couple of events within a system and you wanted to track how long on average each of these events took, then this would be a good use case for this library.
+
 ## Developing locally
 
-When developing locally, you can pull down the github repository from here: https://github.com/davidtadams/action_logger
+When developing locally, you can pull down [this github repository](https://github.com/davidtadams/action_logger).
 
 You will need to have git installed on your machine along with the above mentioned dependencies of NodeJS and npm.
 
@@ -130,7 +135,9 @@ In regards to the environment that this code will be run in, the only assumption
 
 I am assuming that a library of this sort would be consumed by some sort of package manager, which in this case, I chose to use npm.
 
-When the assignment says that a user will be making concurrent calls into this library, I am assuming that this means that even though the nature of the library functionality is not inherently asynchronous, it should be asynchronous in order to allow for concurrent calls.
+When the assignment says that a user will be making concurrent calls into this library, I am assuming that this means that even though the nature of the library functionality is not inherently asynchronous, it should be asynchronous in order to allow for concurrent calls. Therefore, I utilized setTimeout to turn the synchronous nature of adding and retrieving the data into asynchronous code.
+
+The assignment does not say anything about rounding the averages, but I decided to round the averages that are sent back from getStats to two decimal places. This was primarily just to make the response cleaner and could be easily changed as I am not rounding the average that is stored, but only the average that is returned.
 
 ## Future Considerations
 

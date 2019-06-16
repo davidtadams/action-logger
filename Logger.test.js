@@ -115,7 +115,7 @@ describe('Logger', () => {
       });
     });
 
-    describe('when multiple actions with multiple entries have been added', () => {
+    describe('when multiple actions of multiple types have been added', () => {
       test('should resolve the promise with a JSON list of the actions and their stats', async () => {
         await logger.addAction('{"action":"action1", "time":5}');
         await logger.addAction('{"action":"action2", "time":20}');
@@ -139,6 +139,13 @@ describe('Logger', () => {
       test('should reject the promise with an error', async () => {
         expect.assertions(1);
 
+        /**
+         * I am not fond of this test as it utilizes implementation details,
+         * in order to test this, which is not good. The test should not care
+         * where or how the actions are stored on the logger object.
+         * However, this was the only way I could think of to simulate an error
+         * condition within getStats that would cause the Promise to reject.
+         */
         try {
           logger.actions = null;
           await logger.getStats();
