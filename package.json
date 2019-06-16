@@ -1,5 +1,5 @@
 {
-  "name": "action_logger",
+  "name": "jc-action-logger",
   "version": "1.0.0",
   "description": "",
   "main": "Logger.js",
@@ -12,11 +12,15 @@
     "url": "git+https://github.com/davidtadams/action_logger.git"
   },
   "author": "David Adams",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/davidtadams/action_logger/issues"
   },
   "homepage": "https://github.com/davidtadams/action_logger#readme",
   "devDependencies": {
     "jest": "^24.8.0"
-  }
+  },
+  "files": [
+    "Logger.js"
+  ]
 }

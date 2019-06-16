@@ -19,7 +19,7 @@ In order to use this library, you will need both [NodeJS](https://nodejs.org/en/
 Once you have NodeJS and npm installed, you can then install this library. This library uses npm as its distribution mechanism, so in order to install the library, you can use the following command:
 
 ```
-npm install --save action-logger
+npm install --save jc-action-logger
 ```
 
 This needs to be run in the project directory for which you are installing this library. The project should already be setup as an npm enabled project.
@@ -31,7 +31,7 @@ This library allows you to log specific actions that are associated with a given
 The library exposes a `Logger` class, that can be instantiated in the following way:
 
 ```
-const Logger = require('action-logger');
+const Logger = require('jc-action-logger');
 
 const logger = new Logger();
 ```
